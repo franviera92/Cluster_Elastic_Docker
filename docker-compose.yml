@@ -190,7 +190,7 @@ services:
     container_name: logstash01
     volumes:
       - type: bind
-        source: ./logstash/config/logstash.yml
+        source: ./logstash/config/logstash01/logstash.yml
         target: /usr/share/logstash/config/logstash.yml
         read_only: true
       - type: bind
@@ -216,7 +216,7 @@ services:
     container_name: logstash02
     volumes:
       - type: bind
-        source: ./logstash/config/logstash.yml
+        source: ./logstash/config/logstash02/logstash.yml
         target: /usr/share/logstash/config/logstash.yml
         read_only: true
       - type: bind
