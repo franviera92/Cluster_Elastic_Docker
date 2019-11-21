@@ -187,6 +187,7 @@ services:
       context: logstash/
       args:
         ELK_VERSION: $ELK_VERSION
+    container_name: logstash01
     volumes:
       - type: bind
         source: ./logstash/config/logstash.yml
@@ -212,6 +213,7 @@ services:
       context: logstash/
       args:
         ELK_VERSION: $ELK_VERSION
+    container_name: logstash02
     volumes:
       - type: bind
         source: ./logstash/config/logstash.yml
@@ -238,6 +240,7 @@ services:
       context: kibana/
       args:
         ELK_VERSION: $ELK_VERSION
+    container_name: kibana
     volumes:
       - type: bind
         source: ./kibana/config/kibana.yml
