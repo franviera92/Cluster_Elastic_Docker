@@ -1,0 +1,33 @@
+[Unit]
+Description=%i service with docker compose
+Requires=docker.service
+After=docker.service
+ 
+[Service]
+Restart=always
+ 
+#WorkingDirectory=/etc/docker/compose/%i
+# En la siguiente ruta debe contener la carpeta con su docker-compose.yml
+WorkingDirectory=/root/%i
+ 
+# Remove old containers, images and volumes
+ExecStartPre=/usr/local/bin/docker-compose down -v
+ExecStartPre=/usr/local/bin/docker-compose rm -fv
+ExecStartPre=-/bin/bash -c 'docker volume ls -qf "name=%i_" | xargs docker volume rm'
+ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=%i_" | xargs docker network rm'
+ExecStartPre=-/bin/bash -c 'docker ps -aqf "name=%i_*" | xargs docker rm'
+ 
+# Compose up
+ExecStart=/usr/local/bin/docker-compose up
+ 
+# Compose down, remove containers and volumes
+ExecStop=/usr/local/bin/docker-compose down -v
+ 
+[Install]
+WantedBy=multi-user.target
+
+# systemctl daemon-reload
+# systemctl enable docker-compose@Cluster_Elastic_Docker
+# systemctl start docker-compose@Cluster_Elastic_Docker
+# systemctl stop docker-compose@Cluster_Elastic_Docker
+# https://www.adictosaltrabajo.com/2018/04/03/ejecutar-cualquier-docker-compose-como-servicio/
