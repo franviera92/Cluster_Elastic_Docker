@@ -201,7 +201,7 @@ services:
       - es01
 
 networks:
-  elk:
+  elastic:
     driver: bridge
 
 volumes:
