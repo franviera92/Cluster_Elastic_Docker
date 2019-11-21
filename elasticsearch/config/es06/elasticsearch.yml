@@ -6,8 +6,8 @@ cluster.name: "Bigniss"
 node.name: es06
 node.master: false
 node.data: false
-discovery.seed_hosts: ["es01","es02","es03","es04","es05"]
-cluster.initial_master_nodes: ["es01","es02","es03"]
+#discovery.seed_hosts: ["es01","es02","es03","es04","es05"]
+#cluster.initial_master_nodes: ["es01","es02","es03"]
 network.host: 0.0.0.0
 
 ## Use single node discovery in order to disable production mode and avoid bootstrap checks

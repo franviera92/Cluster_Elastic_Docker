@@ -23,8 +23,12 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
+      - discovery.seed_hosts=es02,es03,es04,es05,es06
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      #ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      #ELASTIC_PASSWORD: changeme
     networks:
       - elastic
   es02:
@@ -49,8 +53,12 @@ services:
       - "9201:9200"
       - "9301:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
+      - discovery.seed_hosts=es01,es03,es04,es05,es06
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      #ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      #ELASTIC_PASSWORD: changeme
     networks:
       - elastic
   es03:
@@ -75,8 +83,12 @@ services:
       - "9202:9200"
       - "9302:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
+      - discovery.seed_hosts=es01,es02,es04,es05,es06
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      #ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      #ELASTIC_PASSWORD: changeme
     networks:
       - elastic
   es04:
@@ -101,8 +113,12 @@ services:
       - "9203:9200"
       - "9303:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
+      - discovery.seed_hosts=es01,es02,es03,es05,es06
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      #ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      #ELASTIC_PASSWORD: changeme
     networks:
       - elastic
   es05:
@@ -127,8 +143,12 @@ services:
       - "9204:9200"
       - "9304:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
+      - discovery.seed_hosts=es01,es02,es03,es04,es06
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      #ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      #ELASTIC_PASSWORD: changeme
     networks:
       - elastic
   es06:
@@ -153,8 +173,12 @@ services:
       - "9205:9200"
       - "9305:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
+      - discovery.seed_hosts=es01,es02,es03,es04,es05
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      #ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      #ELASTIC_PASSWORD: changeme
     networks:
       - elastic
 
