@@ -255,31 +255,17 @@ services:
   praeco:
     build:
       context: praeco/
-      args:
-        ELK_VERSION: $ELK_VERSION
     container_name: praeco
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - type: bind
-        source: ./elasticsearch/config/es01/elasticsearch.yml
-        target: /usr/share/elasticsearch/config/elasticsearch.yml
-        read_only: true
-      - type: volume
-        source: data01
-        target: /usr/share/elasticsearch/data
+    #volumes:
+      #- type: bind
+      #  source: ./elasticsearch/config/es01/elasticsearch.yml
+      #  target: /usr/share/elasticsearch/config/elasticsearch.yml
+      #  read_only: true
+      #- type: volume
+      #  source: praeco
+      #  target: /usr/share/elasticsearch/data
     ports:
-      - "9200:9200"
-      - "9300:9300"
-    environment:
-      - discovery.seed_hosts=es02,es03,es04,es05,es06
-      - cluster.initial_master_nodes=es01,es02,es03
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      #ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      #ELASTIC_PASSWORD: changeme
+      - "80:80"
     networks:
       - elastic
 
@@ -302,4 +288,6 @@ volumes:
   data06:
     driver: local
   data07:
+    driver: local
+  praeco:
     driver: local
