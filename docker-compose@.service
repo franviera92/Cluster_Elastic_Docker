@@ -28,6 +28,9 @@ WantedBy=multi-user.target
 
 # systemctl daemon-reload
 # systemctl enable docker-compose@Cluster_Elastic_Docker
+# systemctl enable docker-compose@praeco
 # systemctl start docker-compose@Cluster_Elastic_Docker
+# systemctl start docker-compose@praeco
 # systemctl stop docker-compose@Cluster_Elastic_Docker
+# systemctl stop docker-compose@praeco
 # https://www.adictosaltrabajo.com/2018/04/03/ejecutar-cualquier-docker-compose-como-servicio/
